@@ -50,7 +50,7 @@
                     <th><a href="" ng-click="predicate = 'kalorii'; reverse=false">Калории</a>
                         (<a href="" ng-click="predicate = '-kalorii';reverse=false">^</a>)</th>
                 </tr>
-                <tr ng-repeat="row in mockData | orderBy:predicate:reverse">
+                <tr ng-repeat="row in pagedData | orderBy:predicate:reverse">
                     <td>{{$index + 1}}</td>
                     <td>{{row.name}}</td>
                     <td>{{row.group}}</td>

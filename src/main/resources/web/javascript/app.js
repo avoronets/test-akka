@@ -38,12 +38,15 @@ angApp.controller('angCtrl', function($scope){
     $scope.step = 10;
     $scope.totalItems = $scope.mockData.length;
 
-    $scope.pagedData = $scope.mockData.slice(($scope.currentPage * $scope.offset)-1, $scope.offset + $scope.step - 1);
+    $scope.pagedData = $scope.mockData.slice(0, 10);
 
     $scope.pageChanged = function() {
+        $scope.start = ($scope.currentPage * $scope.step) - $scope.step;
+        $scope.end = $scope.start + $scope.step;
         console.log('Page changed to: ' + $scope.currentPage);
-        $scope.pagedData = $scope.mockData.slice(($scope.currentPage * $scope.offset)-1, $scope.offset + $scope.step - 1);
-        $scope.offset = (($scope.currentPage * $scope.offset)-1)
+        console.log('Start from: ' + $scope.start);
+        console.log('Go to: ' + $scope.end);
+        $scope.pagedData = $scope.mockData.slice($scope.start, $scope.end);
     };
 
 });
