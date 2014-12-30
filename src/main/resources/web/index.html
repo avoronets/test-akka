@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="javascript/jquery-2.1.1.js"></script>
+    <script src="javascript/bootstrap.min.js"></script>
+    <script src="javascript/angular.min.js"></script>
+    <script src="javascript/ui-bootstrap-tpls-0.12.0.min.js"></script>
+    <script src="javascript/app.js"></script>
+    <title></title>
+</head>
+<body ng-app = "angApp">
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Test AngularJS</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+<div class="container" ng-controller="angCtrl" style="margin-top: 40px">
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            <h3>Таблица калорийности продуктов</h3>
+            <table class="table">
+                <tr>
+                    <th></th>
+                    <th><a href="" ng-click="predicate = 'name'; reverse=false">Продукт</a>
+                        (<a href="" ng-click="predicate = '-name';reverse=false">^</a>)</th>
+                    <th><a href="" ng-click="predicate = 'group'; reverse=false">Группа продуктов</a>
+                        (<a href="" ng-click="predicate = '-group';reverse=false">^</a>)</th>
+                    <th><a href="" ng-click="predicate = 'belki'; reverse=false">Белки</a>
+                        (<a href="" ng-click="predicate = '-belki';reverse=false">^</a>)</th>
+                    <th><a href="" ng-click="predicate = 'ziry'; reverse=false">Жиры</a>
+                        (<a href="" ng-click="predicate = '-ziry';reverse=false">^</a>)</th>
+                    <th><a href="" ng-click="predicate = 'uglevody'; reverse=false">Углеводы</a>
+                        (<a href="" ng-click="predicate = '-uglevody';reverse=false">^</a>)</th>
+                    <th><a href="" ng-click="predicate = 'kalorii'; reverse=false">Калории</a>
+                        (<a href="" ng-click="predicate = '-kalorii';reverse=false">^</a>)</th>
+                </tr>
+                <tr ng-repeat="row in mockData">
+                    <td>{{$index + 1}}</td>
+                    <td>{{row[0]}}</td>
+                    <td>{{row[5]}}</td>
+                    <td>{{row[1]}}</td>
+                    <td>{{row[2]}}</td>
+                    <td>{{row[3]}}</td>
+                    <td>{{row[4]}}</td>
+                </tr>
+            </table>
+            <pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()"></pagination>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+</div>
+
+</body>
+</html>

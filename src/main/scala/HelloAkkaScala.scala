@@ -65,7 +65,7 @@ class CreationActor extends Actor
     val system2 = ActorSystem("System2", ConfigFactory.load().getConfig("systemTwo"))
 
     val testActor1 = system1.actorOf(Props[TestActor1], "testActor1")
-    val testActor2 = system1.actorOf(Props[TestActor2], "testActor2")
+    val testActor2 = system2.actorOf(Props[TestActor2], "testActor2")
 
     def receive =
     {
