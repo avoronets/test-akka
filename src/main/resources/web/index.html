@@ -3,6 +3,7 @@
 <head lang="en">
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.css">
     <script src="javascript/jquery-2.1.1.js"></script>
     <script src="javascript/bootstrap.min.js"></script>
     <script src="javascript/angular.min.js"></script>
@@ -31,38 +32,48 @@
 </nav>
 <div class="container" ng-controller="angCtrl" style="margin-top: 40px">
     <div class="row">
-        <div class="col-lg-3"></div>
-        <div class="col-lg-6">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10" style="text-align: center">
             <h3>Таблица калорийности продуктов</h3>
-            <table class="table">
-                <tr>
-                    <th></th>
-                    <th><a href="" ng-click="predicate = 'name'; reverse=false">Продукт</a>
-                        (<a href="" ng-click="predicate = '-name';reverse=false">^</a>)</th>
-                    <th><a href="" ng-click="predicate = 'group'; reverse=false">Группа продуктов</a>
-                        (<a href="" ng-click="predicate = '-group';reverse=false">^</a>)</th>
-                    <th><a href="" ng-click="predicate = 'belki'; reverse=false">Белки</a>
-                        (<a href="" ng-click="predicate = '-belki';reverse=false">^</a>)</th>
-                    <th><a href="" ng-click="predicate = 'ziry'; reverse=false">Жиры</a>
-                        (<a href="" ng-click="predicate = '-ziry';reverse=false">^</a>)</th>
-                    <th><a href="" ng-click="predicate = 'uglevody'; reverse=false">Углеводы</a>
-                        (<a href="" ng-click="predicate = '-uglevody';reverse=false">^</a>)</th>
-                    <th><a href="" ng-click="predicate = 'kalorii'; reverse=false">Калории</a>
-                        (<a href="" ng-click="predicate = '-kalorii';reverse=false">^</a>)</th>
-                </tr>
-                <tr ng-repeat="row in pagedData | orderBy:predicate:reverse">
-                    <td>{{$index + 1}}</td>
-                    <td>{{row.name}}</td>
-                    <td>{{row.group}}</td>
-                    <td>{{row.belki}}</td>
-                    <td>{{row.ziry}}</td>
-                    <td>{{row.uglevody}}</td>
-                    <td>{{row.kalorii}}</td>
-                </tr>
+        </div>
+        <div class="col-lg-1"></div>
+    </div>
+    <div class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th><a href="javascript:void(0)" ng-click="sort('name', false)">Продукт</a>
+                            (<a href="javascript:void(0)" ng-click="sort('name', true)">^</a>)</th>
+                        <th><a href="javascript:void(0)" ng-click="sort('group', false)">Группа продуктов</a>
+                            (<a href="javascript:void(0)" ng-click="sort('group', true)">^</a>)</th>
+                        <th><a href="javascript:void(0)" ng-click="sort('belki', false)">Белки</a>
+                            (<a href="javascript:void(0)" ng-click="sort('belki', true)">^</a>)</th>
+                        <th><a href="javascript:void(0)" ng-click="sort('ziry', false)">Жиры</a>
+                            (<a href="javascript:void(0)" ng-click="sort('ziry', true)">^</a>)</th>
+                        <th><a href="javascript:void(0)" ng-click="sort('uglevody', false)">Углеводы</a>
+                            (<a href="javascript:void(0)" ng-click="sort('uglevody', true)">^</a>)</th>
+                        <th><a href="javascript:void(0)" ng-click="sort('kalorii', false)">Калории</a>
+                            (<a href="javascript:void(0)" ng-click="sort('kalorii', true)">^</a>)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="row in pagedData">
+                        <td>{{$index + 1}}</td>
+                        <td>{{row.name}}</td>
+                        <td>{{row.group}}</td>
+                        <td>{{row.belki}}</td>
+                        <td>{{row.ziry}}</td>
+                        <td>{{row.uglevody}}</td>
+                        <td>{{row.kalorii}}</td>
+                    </tr>
+                </tbody>
             </table>
             <pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()"></pagination>
         </div>
-        <div class="col-lg-3"></div>
+        <div class="col-lg-1"></div>
     </div>
 </div>
 

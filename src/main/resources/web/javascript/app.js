@@ -33,8 +33,24 @@ angApp.controller('angCtrl', function($scope){
 
 ];
 
+    function sortBy(key, reverse) {
+        return function(a, b) {
+            if (a[key] < b[key]) {
+                return reverse ? 1 : -1;
+            }
+            if (a[key] > b[key]) {
+                return reverse ? -1 : 1;;
+            }
+            return 0;
+        };
+    }
+
+    $scope.sort = function(key, reverse){
+        $scope.mockData = $scope.mockData.sort(sortBy(key, reverse));
+        $scope.pageChanged();
+    }
+
     $scope.currentPage = 1;
-    $scope.offset = 1;
     $scope.step = 10;
     $scope.totalItems = $scope.mockData.length;
 
